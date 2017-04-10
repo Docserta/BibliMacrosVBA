@@ -2,7 +2,7 @@ VERSION 1.0 CLASS
 BEGIN
   MultiUse = -1  'True
 END
-Attribute VB_Name = "c_ProgressBarre"
+Attribute VB_Name = "c_ProgressBar"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
@@ -26,6 +26,38 @@ Private Sub Class_initialize()
     Frm_Progression.Show vbModeless
 
 End Sub
+
+Property Let Balayage(ValProgress As Long)
+'Modifie la longueur et la position de la barre de progression
+'Pour effectuer un balayage.
+'Utilisé lorsque le traitement peu être long et qu'on ne peu pas calculer le nombre d'opérations
+ Dim Lgbarre As Integer
+ Dim posMin As Integer, posMax As Integer, DebBarre As Integer, FinBarre As Integer
+ 
+    Lgbarre = 7
+    posMin = 18
+    posMax = 318
+    While ValProgress > 100
+        ValProgress = ValProgress - 100
+    Wend
+
+    
+    If ValProgress < Lgbarre Then
+        DebBarre = posMin
+        FinBarre = ValProgress * 3
+    ElseIf (ValProgress > 100 - Lgbarre And ValProgress < 100) Then
+        DebBarre = ValProgress * 3
+        FinBarre = posMax - (ValProgress * 3)
+    ElseIf ValProgress >= Lgbarre And ValProgress < 100 - Lgbarre Then
+        DebBarre = ValProgress * 3
+        FinBarre = Lgbarre * 3
+    End If
+    
+        Frm_Progression.Bar1.Left = DebBarre
+        Frm_Progression.Bar1.Width = FinBarre
+    
+       
+End Property
 
 Property Let Progression(ValProgress As Long)
 'Modifie la longueur de la barre de progression

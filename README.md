@@ -1,11 +1,14 @@
 # BibliMacroVBA
 
 Check_Env
-	Valide si le document actif est compatible avec la macro executÈe
+	Valide si le document actif est compatible avec la macro execut√©e
 	CATPart, CATProduct ou CATDrawing
 
 LogUtilMacro
 	Ecrit une ligne dans un fichier de log avc le nom de la macro, la date et le nom du User
 
 NomCatiaExcel
-	Ensemble de fonctions d'extraction dans les fichiers Excel de nomenclature gÈnÈrÈ par Catie 
+	Ensemble de fonctions d'extraction dans les fichiers Excel de nomenclature g√©n√©r√© par Catie 
+
+Language
+	Ouvre un part vierge pour cherche le nom du MainBody et en d√©duire le language de Catia

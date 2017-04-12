@@ -34,27 +34,27 @@ Property Let Balayage(ValProgress As Long)
  Dim Lgbarre As Integer
  Dim posMin As Integer, posMax As Integer, DebBarre As Integer, FinBarre As Integer
  
-    Lgbarre = 7
-    posMin = 18
-    posMax = 318
-    While ValProgress > 100
-        ValProgress = ValProgress - 100
-    Wend
+    Lgbarre = 7 
+    posMin = 18 
+    posMax = 318 
+    While ValProgress > 100 
+        ValProgress = ValProgress - 100 
+    Wend 
+    If ValProgress < Lgbarre Then 
+        DebBarre = posMin 
+        FinBarre = ValProgress * 3 
+    ElseIf (ValProgress >= 100 - Lgbarre And ValProgress < 100) Then 
+        DebBarre = ValProgress * 3 
+        'FinBarre = (Lgbarre * 3 - (posMax - posMin - ValProgress * 3)) * 3 
+        FinBarre = (posMax - posMin - ValProgress * 3) 
+    ElseIf ValProgress >= Lgbarre And ValProgress < 100 - Lgbarre Then 
+        DebBarre = ValProgress * 3 
+        FinBarre = Lgbarre * 3 
+    End If 
+    
+        Frm_Progression.Bar1.Left = DebBarre 
+        Frm_Progression.Bar1.Width = FinBarre 
 
-    
-    If ValProgress < Lgbarre Then
-        DebBarre = posMin
-        FinBarre = ValProgress * 3
-    ElseIf (ValProgress > 100 - Lgbarre And ValProgress < 100) Then
-        DebBarre = ValProgress * 3
-        FinBarre = posMax - (ValProgress * 3)
-    ElseIf ValProgress >= Lgbarre And ValProgress < 100 - Lgbarre Then
-        DebBarre = ValProgress * 3
-        FinBarre = Lgbarre * 3
-    End If
-    
-        Frm_Progression.Bar1.Left = DebBarre
-        Frm_Progression.Bar1.Width = FinBarre
     
        
 End Property

@@ -10,13 +10,14 @@ Attribute VB_Exposed = False
 '*********************************************************************
 '* Classe : c_ProgressBarre
 '*
-'* Fonctions :  Afficher et faire défiler une barre de progression avec
-'*              différentes informations
+'* Fonctions :  Afficher et faire dÃ©filer une barre de progression avec
+'*              diffÃ©rentes informations
 '*
 '*
 '* Version : 1
-'* Création :  CFR
-'* Modification : 18/08/15
+'* CrÃ©ation :  CFR
+'* Modification : 15/04/17
+'*                Ajout fonction de balayage
 '*
 '**********************************************************************
 
@@ -30,7 +31,7 @@ End Sub
 Property Let Balayage(ValProgress As Long)
 'Modifie la longueur et la position de la barre de progression
 'Pour effectuer un balayage.
-'Utilisé lorsque le traitement peu être long et qu'on ne peu pas calculer le nombre d'opérations
+'UtilisÃ© lorsque le traitement peu Ãªtre long et qu'on ne peu pas calculer le nombre d'opÃ©rations
  Dim Lgbarre As Integer
  Dim posMin As Integer, posMax As Integer, DebBarre As Integer, FinBarre As Integer
  
@@ -90,13 +91,13 @@ Public Sub ProgressEtape(ValProgess As Long, StrEtape As String)
 End Sub
 
 Public Sub CalculProgression(PB_Etape As Long, PB_Nb_Etapes As Long, PB_Item As Long, PB_NbItem As Long, PB_Caption As String)
-'gestion de l'avancement de la barre de progression pour une succession d'étapes contenant plusieurs item
+'gestion de l'avancement de la barre de progression pour une succession d'Ã©tapes contenant plusieurs item
 
 ' PB_Etape = etape en cours
-' PB_Nb_Etapes = nombre d'étapes
-' PB_Item = item en cours de l'étape en cours
-' PB_NbItem = Nombre d'items dans l'étape en cour
-' PB_Caption = Titre de la fenètre
+' PB_Nb_Etapes = nombre d'Ã©tapes
+' PB_Item = item en cours de l'Ã©tape en cours
+' PB_NbItem = Nombre d'items dans l'Ã©tape en cour
+' PB_Caption = Titre de la fenÃ¨tre
 '(((PB_Etape - 1) * (100 / PB_NB_Etapes)) + (((100 / PB_NB_Etapes) / PB_NbItem) * PB_Item))
 Dim PB_Barre As Long
     Titre = PB_Caption
@@ -118,7 +119,7 @@ Public Sub Affiche()
 End Sub
 
 Private Sub Class_Terminate()
-'masque et décharge de la barre de progression
+'masque et dÃ©charge de la barre de progression
     Frm_Progression.Hide
     Unload Frm_Progression
     
